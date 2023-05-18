@@ -6,7 +6,7 @@ public class EnemyChaser : MonoBehaviour
 {
     NavMeshAgent agent;
     [SerializeField] Transform player;
-
+    [SerializeField] GameObject hitPlayerEffect;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -18,10 +18,11 @@ public class EnemyChaser : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="Player")
+        if (other.tag == "Player")
         {
             GameManager.instance.LoseLife();
-
+            GameObject.Instantiate(hitPlayerEffect, transform.position, transform.rotation);
+            transform.position = GameManager.instance.enemySpawn.position;
         }
     }
 }

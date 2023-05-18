@@ -31,6 +31,15 @@ public class TutorialManager : MonoBehaviour
                 AdvanceTutorialPhase();
             }
         }
+        else if (tutorialPhase == 3)
+        {
+            currentTime -= Time.deltaTime;
+            if (currentTime <= 0)
+            {
+                currentTime = 30;
+                UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+            }
+        }
     }
     private void AdvanceTutorialPhase()
     {
@@ -49,7 +58,7 @@ public class TutorialManager : MonoBehaviour
                 break;
             //tutDone
             case 3:
-                currentTime = timeRequiredToAvoidEnemy;
+                currentTime = 5;
                 enemy.SetActive(false);
                 break;
         }

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCoin: {fileID: 2391884541828142541}
-  timeBetweenReactivations: 5
+  timeBetweenReactivations: 60
 --- !u!1001 &819673301758235936
 PrefabInstance:
   m_ObjectHideFlags: 0

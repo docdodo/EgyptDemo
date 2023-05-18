@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -10,9 +11,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] int lives;
     public ParticleSystem coinEffect;
     [SerializeField] Animator coinAnim;
-
+    public Transform enemySpawn;
     //UI
-   [SerializeField] TextMeshProUGUI coinsText;
+    [SerializeField] TextMeshProUGUI coinsText;
     [SerializeField] Image[] hearts;
     [SerializeField] GameObject[] brokenHearts;
     // Start is called before the first frame update
@@ -44,5 +45,16 @@ public class GameManager : MonoBehaviour
         }
         hearts[lives].enabled = false;
         brokenHearts[lives].SetActive(true);
+    }
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+    public void PauseGame(bool pauseGame)
+    {
+        if (pauseGame)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
     }
 }
