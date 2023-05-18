@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public ParticleSystem coinEffect;
     [SerializeField] Animator coinAnim;
     public Transform[] enemySpawns;
+    [SerializeField] AudioSource coinAudioSource;
+    [SerializeField] AudioSource enemyAudioSource;
     //UI
     [SerializeField] TextMeshProUGUI coinsText;
     [SerializeField] Image[] hearts;
@@ -37,11 +39,13 @@ public class GameManager : MonoBehaviour
         coinEffect.Play();
         coinAnim.SetTrigger("Collect");
         coinsText.text = coins.ToString();
+        coinAudioSource.PlayOneShot(coinAudioSource.clip);
     }
     public void LoseLife(int lives_ = 1)
     {
         lives -= lives_;
-        if(lives<=0)
+        enemyAudioSource.PlayOneShot(enemyAudioSource.clip);
+        if (lives<=0)
         {
             Time.timeScale = 0;
             

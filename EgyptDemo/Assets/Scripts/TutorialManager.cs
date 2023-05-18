@@ -11,6 +11,8 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] float timeRequiredToAvoidEnemy;
     [SerializeField] GameObject coins;
     [SerializeField] GameObject enemy;
+    [SerializeField] AudioSource coinAudioSource;
+    [SerializeField] AudioSource enemyAudioSource;
     //tutorial text settings
     [SerializeField] string[] tutorialMessages;
     [SerializeField] TextMeshProUGUI tutorialTextField;
@@ -65,7 +67,8 @@ public class TutorialManager : MonoBehaviour
     }
     public void CollectCoin()
     {
-        if(tutorialPhase==0)
+        coinAudioSource.PlayOneShot(coinAudioSource.clip);
+        if (tutorialPhase==0)
         {
             tutorialPhase = 1;
             AdvanceTutorialPhase();
@@ -84,5 +87,6 @@ public class TutorialManager : MonoBehaviour
     public void HitByEnemy()
     {
         currentTime = timeRequiredToAvoidEnemy;
+        enemyAudioSource.PlayOneShot(enemyAudioSource.clip);
     }
 }

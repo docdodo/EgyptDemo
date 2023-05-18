@@ -22,8 +22,8 @@ public class EnemyChaser : MonoBehaviour
         if (lifeTimeCurrent <= 0)
         {
             lifeTimeCurrent = lifetimeMax;
-            transform.position = GameManager.instance.enemySpawns[Random.Range(0, GameManager.instance.enemySpawns.Length)].position;
             GameObject.Instantiate(deathEffect, transform.position, transform.rotation);
+            transform.position = GameManager.instance.enemySpawns[Random.Range(0, GameManager.instance.enemySpawns.Length)].position;
 
         }
     }
