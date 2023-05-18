@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] int lives;
     public ParticleSystem coinEffect;
     [SerializeField] Animator coinAnim;
-    public Transform enemySpawn;
+    public Transform[] enemySpawns;
     //UI
     [SerializeField] TextMeshProUGUI coinsText;
     [SerializeField] Image[] hearts;
     [SerializeField] GameObject[] brokenHearts;
+    [SerializeField] GameObject LoseScreenUI;
+    [SerializeField] GameObject RegularUI;
     // Start is called before the first frame update
     void Awake()
     {
@@ -41,6 +43,11 @@ public class GameManager : MonoBehaviour
         lives -= lives_;
         if(lives<=0)
         {
+            Time.timeScale = 0;
+            
+                LoseScreenUI.SetActive(true);
+            
+            RegularUI.SetActive(false);
             return;
         }
         hearts[lives].enabled = false;
@@ -49,6 +56,11 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+    }
+    public void ReplayGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(2);
     }
     public void PauseGame(bool pauseGame)
     {
