@@ -65,7 +65,7 @@ public class TutorialManager : MonoBehaviour
         {
             coinsCollected++;
             GameManager.instance.AddCoin();
-            if(coinsCollected<=5)
+            if(coinsCollected>=5)
             {
                 tutorialPhase = 2;
                 AdvanceTutorialPhase();
