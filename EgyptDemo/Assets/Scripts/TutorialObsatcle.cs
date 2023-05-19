@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 public class TutorialObsatcle : MonoBehaviour
-{
+{//enemy used in the tutorial
     NavMeshAgent agent;
     [SerializeField] Transform player;
 

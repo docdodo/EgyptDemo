@@ -4,17 +4,19 @@ using UnityEngine;
 using TMPro;
 public class TutorialManager : MonoBehaviour
 {
+    //manages tutorial progression
+    [Header("Editable Values")]
+    [SerializeField] float timeRequiredToAvoidEnemy;
+    [SerializeField] string[] tutorialMessages;
+    [Header("References")]
     public static TutorialManager instance;
     private int tutorialPhase;
     private float currentTime;
     private int coinsCollected;
-    [SerializeField] float timeRequiredToAvoidEnemy;
     [SerializeField] GameObject coins;
     [SerializeField] GameObject enemy;
     [SerializeField] AudioSource coinAudioSource;
     [SerializeField] AudioSource enemyAudioSource;
-    //tutorial text settings
-    [SerializeField] string[] tutorialMessages;
     [SerializeField] TextMeshProUGUI tutorialTextField;
 
     private void Awake()
@@ -43,6 +45,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
     }
+    //logic for progressing through the tutorial, the function will change based on what phase you are in
     private void AdvanceTutorialPhase()
     {
         tutorialTextField.text = tutorialMessages[tutorialPhase];
@@ -84,6 +87,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
     }
+    //when hit by an enemy reset the time required to avoid them
     public void HitByEnemy()
     {
         currentTime = timeRequiredToAvoidEnemy;

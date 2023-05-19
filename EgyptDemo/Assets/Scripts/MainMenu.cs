@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //very simple script to control the main menu UI
+   
    public void StartGame()
     {
         Time.timeScale = 1;

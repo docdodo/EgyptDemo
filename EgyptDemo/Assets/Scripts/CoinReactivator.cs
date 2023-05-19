@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class CoinReactivator : MonoBehaviour
 {
-   [SerializeField] GameObject myCoin;
+    //reactivates coins over time, value an be changed in inspector
+   
+    [Header("Editable Values")]
     public float timeBetweenReactivations;
-    float currentTime;
+    private float currentTime;
+
+    [Header("References")]
+    [SerializeField] GameObject myCoin;
     private void Start()
     {
         currentTime = timeBetweenReactivations;

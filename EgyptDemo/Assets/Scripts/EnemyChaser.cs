@@ -4,12 +4,18 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyChaser : MonoBehaviour
 {
-    NavMeshAgent agent;
+    //chases player down using navmesh AI
+    [Header("Editable Values")]
+    //After a certain amount of time the enemy will respawn on its own. This is to prevent all the enemies from getting stck following the player from behind
+    [SerializeField] float lifetimeMax;
+    float lifeTimeCurrent;
+
+    [Header("References")]
     [SerializeField] Transform player;
     [SerializeField] GameObject hitPlayerEffect;
     [SerializeField] GameObject deathEffect;
-    [SerializeField] float lifetimeMax;
-    float lifeTimeCurrent;
+    NavMeshAgent agent;
+   
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();

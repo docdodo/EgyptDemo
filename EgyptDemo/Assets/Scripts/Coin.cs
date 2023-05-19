@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    //simple coin class that adds score when collected
      
     private void OnTriggerEnter(Collider other)
     {

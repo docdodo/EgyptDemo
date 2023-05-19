@@ -5,16 +5,17 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
-{
+{//controls the gamestate inlcuing coins and lives and enemy spawn locations, etc
+    [Header("Editable Values")]
+    public Transform[] enemySpawns;
+    [Header("References")]
     public static GameManager instance;
     [SerializeField] int coins;
     [SerializeField] int lives;
-    public ParticleSystem coinEffect;
     [SerializeField] Animator coinAnim;
-    public Transform[] enemySpawns;
     [SerializeField] AudioSource coinAudioSource;
     [SerializeField] AudioSource enemyAudioSource;
-    //UI
+    [Header("References UI")]
     [SerializeField] TextMeshProUGUI coinsText;
     [SerializeField] Image[] hearts;
     [SerializeField] GameObject[] brokenHearts;
@@ -36,7 +37,6 @@ public class GameManager : MonoBehaviour
     public void AddCoin(int coins_=1)
     {
         coins += coins_;
-        coinEffect.Play();
         coinAnim.SetTrigger("Collect");
         coinsText.text = coins.ToString();
         coinAudioSource.PlayOneShot(coinAudioSource.clip);
@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
     public void ReplayGame()
     {

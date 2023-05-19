@@ -4,12 +4,15 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 public class TrajectoryRenderer : MonoBehaviour
 {
-
+    //Used to control the players movement
+    [Header("Editable Values")]
+    [SerializeField] float maxMoveDistance;
+    [SerializeField] float speed;
+    [Header("References")]
     [SerializeField] Transform startPos;
-    
     [SerializeField]  Camera cam;
-    Vector3 endPos;
     [SerializeField] LineRenderer lineRenderer;
+    Vector3 endPos;
     private RaycastHit hit;
     Rigidbody rb;
     // Start is called before the first frame update
@@ -20,8 +23,7 @@ public class TrajectoryRenderer : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        //stop player input while over UI
+    { //stop player input while over UI
         
             
         if (Input.GetMouseButtonUp(0))
@@ -36,7 +38,7 @@ public class TrajectoryRenderer : MonoBehaviour
 
     }
 
-   
+   //when holding the mouse or your finger a line will be drawn from the player towards where you are holding.
     void InputHold()
     {
         lineRenderer.positionCount = 2;
@@ -48,8 +50,8 @@ public class TrajectoryRenderer : MonoBehaviour
             Debug.Log(hit.transform.name);
             Debug.Log("hit");
             endPos = hit.point;
-            endPos.x = Mathf.Clamp(endPos.x, startPos.position.x-2.5f, startPos.position.x+2.5f);
-            endPos.z = Mathf.Clamp(endPos.z, startPos.position.z - 2.5f, startPos.position.z + 2.5f);
+            endPos.x = Mathf.Clamp(endPos.x, startPos.position.x-maxMoveDistance, startPos.position.x+ maxMoveDistance);
+            endPos.z = Mathf.Clamp(endPos.z, startPos.position.z - maxMoveDistance, startPos.position.z + maxMoveDistance);
 
         }
         endPos.y = startPos.position.y;
@@ -57,6 +59,7 @@ public class TrajectoryRenderer : MonoBehaviour
         lineRenderer.SetPosition(1, endPos);
       
     }
+    //when releasing the mouse or your finger a force will be added to the player to shoot them towards where you were holding, the longer the distance of the line the stronger the force 
     void InputRelease()
     {
         if (Time.timeScale == 0)
@@ -66,7 +69,7 @@ public class TrajectoryRenderer : MonoBehaviour
         }
         lineRenderer.positionCount = 0;
        float dist= Vector3.Distance(startPos.position, endPos);
-        rb.AddForce((endPos-startPos.position) *dist,ForceMode.Impulse);
+        rb.AddForce((endPos-startPos.position) *dist*speed,ForceMode.Impulse);
         
     }
 }
