@@ -6797,6 +6797,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 40726093}
+    - target: {fileID: 1095844037298545370, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
+      propertyPath: lifetimeMax
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
 --- !u!1001 &353856185
@@ -8619,6 +8623,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 40726093}
+    - target: {fileID: 1095844037298545370, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
+      propertyPath: lifetimeMax
+      value: 65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
 --- !u!1 &414896102
@@ -12859,7 +12867,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -30619,6 +30627,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 40726093}
+    - target: {fileID: 1095844037298545370, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
+      propertyPath: lifetimeMax
+      value: 70
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
 --- !u!1 &1447932038
@@ -34806,6 +34818,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 40726093}
+    - target: {fileID: 1095844037298545370, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
+      propertyPath: lifetimeMax
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 799032009270c2a4ca5d5055dd899f8a, type: 3}
 --- !u!4 &1666066623 stripped
